@@ -1,0 +1,33 @@
+
+
+.new-product {
+  min-height: 300px;
+  background: $dashbord-inner-back;
+  position: relative;
+  z-index: 1;
+  padding: 50px 0 40px;
+
+  .new-product__layout {
+    padding: 0 50px;
+    margin-bottom: 10px;
+    @include flexbox;
+    @include align-items( center );
+    @include justify-content( space-between );
+
+    div.new-product__input {
+      width: 100%;
+    }
+
+    &.new-product__layout-small {
+      div.new-product__input {
+        width: 23%;
+      }
+    }
+
+  }
+
+
+
+
+
+}

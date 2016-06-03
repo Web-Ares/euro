@@ -1,0 +1,6 @@
+.users
+  - @users.each do | user |
+    .users.item
+      %img{ :src => user.image }
+      #{ user.name }
+      %span #{ user.account } грн

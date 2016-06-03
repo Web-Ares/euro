@@ -1,0 +1,14 @@
+%form{ :method => :post, :action => schedules_path }
+  %select{:name=>:first_country}
+    %option{ :value => 0, :selected => true } Выбрать
+    - @countries.each do |country|
+      %option{ :value => country.id } #{ country.name }
+  %select{:name=>:second_country}
+    %option{ :value => 0, :selected => true } Выбрать
+    - @countries.each do |country|
+      %option{ :value => country.id } #{ country.name }
+  %input{ :type => :checkbox, :checked => true, :id => :draw, :name => :draw }
+  %input{ :type => :text, :value => '2016-06-10T22:00', :name => :date }
+
+  %label{ :for => :draw } Возможность ничьи
+  %button{ :type => :submit } Ok

@@ -1,0 +1,8 @@
+.not-valid{
+  border-color: $err-fields !important;
+
+  &:focus,
+  &.not-touched {
+    border-color: $dashbord-border-color !important;
+  }
+}

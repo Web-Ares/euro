@@ -1,0 +1,33 @@
+.context {
+  position: absolute;
+  background: $dashbord-inner-back;
+  border: 1px solid $dashbord-border-color;
+  overflow: hidden;
+
+  &.context_hidden{
+    display: none;
+  }
+
+  li {
+    display: none;
+  }
+
+  a {
+    display: block;
+    height: 60px;
+    @include flexbox;
+    @include align-items( center );
+    padding: 0 20px 0 40px;
+  }
+
+  &.products__context_removable {
+    li:nth-child(2){
+      display: block;
+    }
+  }
+  &.products__context_moderateble {
+    li:nth-child(1){
+      display: block;
+    }
+  }
+}

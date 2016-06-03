@@ -1,0 +1,10 @@
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg) translateZ(0);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg) translateZ(0);
+  }
+}

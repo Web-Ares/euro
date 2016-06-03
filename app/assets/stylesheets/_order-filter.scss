@@ -1,0 +1,70 @@
+.order-filter {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  margin-left: 20px;
+  @include flexbox;
+  @include align-items( center );
+
+  .websters-select {
+    margin: 0 10px 0 10px;
+  }
+
+  .order-filter__chk {
+
+    label {
+      width: 20px;
+      height: 20px;
+      border: none;
+      background: transparent;
+      position: relative;
+      display: block;
+
+      &:after,
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: url("order-filter__btn-after.svg");
+      }
+
+      &:after {
+        background: url("order-filter__btn-after.svg");
+
+      }
+      &:before {
+        background: url("order-filter__btn-before.svg");
+        opacity: 0;
+
+      }
+    }
+
+    input[ type = checkbox ] {
+      position: absolute;
+      clip: rect(0, 0, 0, 0);
+
+      &:checked + label {
+
+        &:after {
+          opacity: 0;
+        }
+
+        &:before {
+          opacity: 1;
+        }
+
+      }
+
+      &:disabled + label {
+        cursor: default;
+        opacity: .5;
+      }
+
+    }
+
+  }
+
+}

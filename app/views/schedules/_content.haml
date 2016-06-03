@@ -1,0 +1,40 @@
+.schedule__content
+  - @schedules.each do |schedule|
+    - if schedule[ :rate ]
+      %div{:class => "schedule__item#{ ' schedule__item_draw' if schedule[ :rate ].draw }", 'data-id' => schedule[ :id ]}
+        %div{:class => "schedule__card#{ ' active' if schedule[ :rate ].winner == schedule[ :first_country ].id }"}
+          %span{ :style => "background-image: url( #{ schedule[ :first_country ].image } ); background-size: cover" }
+          #{ schedule[ :first_country ].name }  #{ schedule[:k][0] if schedule[:k][0] && !schedule[:k][0].infinite?  }
+          - if schedule[ :can_make_rate ]
+            %button{ 'data-action' => rates_path, 'data-id' => schedule[ :first_country ].id, 'data-rate' => schedule[ :rate ].id } Сделать ставку
+        %span.schedule__time #{ schedule[ :date ] } #{ schedule[:k][2] if schedule[:k][2] && !schedule[:k][2].infinite?  }
+        %div{:class => "schedule__card#{ ' active' if schedule[ :rate ].winner == schedule[ :second_country ].id }"}
+          %span{ :style => "background-image: url( #{ schedule[ :second_country ].image } ); background-size: cover" }
+          #{ schedule[ :second_country ].name }  #{ schedule[:k][1] if schedule[:k][1] && !schedule[:k][1].infinite?  }
+          - if schedule[ :can_make_rate ]
+            %button{ 'data-action' => rates_path, 'data-id' => schedule[ :second_country ].id, 'data-rate' => schedule[ :rate ].id } Сделать ставку
+        - if schedule[ :can_make_rate ] && schedule[ :draw ]
+          %button.schedule__draw-btn{ 'data-action' => rates_path, 'data-rate' => schedule[ :rate ].id }  Сделать ставку на ничью
+        - if schedule[ :date ] == '...' && current_user.admin
+          %form.schedule__score{ :action => schedule_path( schedule[ :id ] ) }
+            %input{:name =>'score'}
+            %input{ :type => :submit, :value => 'Ok' }
+    -else
+      .schedule__item{ 'data-id' => schedule[ :id ]}
+        .schedule__card
+          %span{ :style => "background-image: url( #{ schedule[ :first_country ].image } ); background-size: cover" }
+          #{ schedule[ :first_country ].name}
+          - if schedule[ :can_make_rate ]
+            %button{ 'data-action' => rates_path, 'data-id' => schedule[ :first_country ].id } Сделать ставку
+        %span.schedule__time #{ schedule[ :date ] }
+        .schedule__card
+          %span{ :style => "background-image: url( #{ schedule[ :second_country ].image } ); background-size: cover" }
+          #{ schedule[ :second_country ].name}
+          - if schedule[ :can_make_rate ]
+            %button{ 'data-action' => rates_path, 'data-id' => schedule[ :second_country ].id } Сделать ставку
+        - if schedule[ :can_make_rate ] && schedule[ :draw ]
+          %button.schedule__draw-btn{ 'data-action' => rates_path }  Сделать ставку на ничью
+        - if schedule[ :date ] == '...' && current_user.admin
+          %form.schedule__score{ :action => schedule_path( schedule[ :id ] ) }
+            %input{:name =>'score'}
+            %input{ :type => :submit, :value => 'Ok' }

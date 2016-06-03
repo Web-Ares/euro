@@ -1,0 +1,142 @@
+
+.dashboard {
+  background: $dashbord-back;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .dashboard__aside {
+    width: 312px;
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    bottom: 60px;
+    border: 1px solid $dashbord-border-color;
+    background: $dashbord-inner-back;
+  }
+
+  .dashboard__content{
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    bottom: 60px;
+    left: 432px;
+    border: 1px solid $dashbord-border-color;
+    background: $dashbord-inner-back;
+    overflow-y: auto;
+  }
+
+  .dashboard__person {
+    height: 194px;
+    position: relative;
+    display: block;
+    text-align: center;
+    padding-top: 29px;
+
+
+    &:after {
+      content: '';
+      position: absolute;
+      height: 2px;
+      background: $dashbord-back;
+      bottom: 0;
+      right: -1px;
+      left: -1px;
+    }
+
+
+
+    .dashboard__person-pic {
+      display: inline-block;
+      width: 87px;
+      height: 87px;
+      position: relative;
+
+      img {
+        position: relative;
+        z-index: 1;
+        width: 87px;
+        height: 87px;
+        border-radius: 50%;
+        margin-bottom: 23px;
+      }
+
+      svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        width: 100%;
+        fill: #fff;
+        opacity: 0;
+        -webkit-transition: opacity 300ms ease-in-out;
+        transition: opacity 300ms ease-in-out;
+      }
+
+      &:hover {
+        svg {
+          opacity: 1;
+        }
+      }
+    }
+
+    span {
+      display: inline-block;
+      width: 100%;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+      font-size: 18px;
+    }
+
+  }
+
+}
+
+.schedule__item {
+  @include flexbox;
+  @include justify-content( space-around );
+  @include align-items( center );
+  position: relative;
+  padding: 40px 0;
+}
+.schedule__time {
+  white-space: nowrap;
+}
+.schedule__card {
+  text-align: center;
+  font-size: 18px;
+  height: 190px;
+  @include flexbox;
+  @include justify-content( space-between );
+  @include align-items( center );
+  @include flex-direction( column );
+  span {
+    display: block;
+    width: 200px;
+    height: 100px;
+    border-radius: 50%;
+    background-position: center;
+    box-shadow: 0 0 5px rgba(0,0,0,1);
+  }
+  button {
+    width: 100%;
+  }
+
+  &.active {
+    button {
+      visibility: hidden;
+    }
+  }
+}
+.schedule__draw-btn,
+.schedule__score {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX( -50% );
+}
+.schedule__item_draw > .schedule__draw-btn  {
+  visibility: hidden;
+}

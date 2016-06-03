@@ -1,0 +1,5 @@
+.countries__content
+  - @countries.each do |country|
+    %div
+      %img{ :src => country.image }
+      #{ country.name }

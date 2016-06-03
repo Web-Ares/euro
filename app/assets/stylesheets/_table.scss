@@ -1,0 +1,47 @@
+.table {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .table__headers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    @include flexbox;
+    @include align-items( center );
+    @include justify-content( space-between );
+  }
+
+  .table__row {
+    @include flexbox;
+    @include align-items( center );
+    @include justify-content( space-between );
+    height: 60px;
+  }
+
+  .table__cell {
+    padding-left: 20px;
+  }
+
+  .table__body {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .table__load {
+    height: 60px;
+    position: relative;
+    display: none;
+
+    &.loader__loading{
+      display: block;
+    }
+  }
+}
